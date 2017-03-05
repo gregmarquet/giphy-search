@@ -1,20 +1,34 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import SearchBar from './components/search_bar';
-import request from 'superagent';
 
-const url = `http://api.giphy.com/v1/gifs/search?q=money&api_key=dc6zaTOxFJmzC`;
 
-request.get(url, function(err, res) {
-  console.log(res.body.data);
-})
+var giphy = require('giphy-api')();
 
-const App = () => { 
-  return (
-    <div>
-      <SearchBar />
-    </div>
-  );
+class App extends Component { 
+  constructor(props){
+    super(props);
+
+    this.state = { giphs: [] };
+
+  }
+
+  giphySearch(keyword){
+    const self = this;
+    giphy.search(keyword, function (err, res) {
+      console.log('result:', res); 
+      self.setState({ giphs:res.data });
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <SearchBar searchCallback={this.giphySearch.bind(this)} />
+      </div>
+    );
+  }
+  
 }
 
 ReactDOM.render(<App />, document.querySelector('.container'));
