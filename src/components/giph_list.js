@@ -1,9 +1,15 @@
 import React from 'react';
+import GiphListItem from './giph_list_item';
 
 const GiphList = (props) => {
+
+  const giphItems = props.giphs.map((giph) => {
+    return <GiphListItem key={giph.id} giph={giph} />
+  })
+
   return (
-    <ul className="col-md-4 list-group">
-      {props.giphs.length}
+    <ul className="">
+      {giphItems}
     </ul>
   );
 };
