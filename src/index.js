@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import SearchBar from './components/search_bar';
+import GiphList from './components/giph_list';
 
 
 var giphy = require('giphy-api')();
@@ -25,6 +26,7 @@ class App extends Component {
     return (
       <div>
         <SearchBar searchCallback={this.giphySearch.bind(this)} />
+        <GiphList giphs={this.state.giphs} />
       </div>
     );
   }
