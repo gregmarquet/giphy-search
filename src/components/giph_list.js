@@ -8,9 +8,9 @@ const GiphList = (props) => {
   })
 
   return (
-    <ul className="">
+    <div className="row">
       {giphItems}
-    </ul>
+    </div>
   );
 };
 

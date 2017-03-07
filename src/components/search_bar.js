@@ -9,7 +9,7 @@ class SearchBar extends Component {
   }
 
   componentDidMount(){
-    const keyword = 'happy';
+    const keyword = 'cats';
     // this.setState({ term:keyword });
     this.search(keyword);
   }
@@ -27,8 +27,9 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div>
+      <div className="search-bar">
         <input
+        className="search-input"
         value={this.state.term}
         onChange={this.handleInputChange.bind(this)} />
       </div>
