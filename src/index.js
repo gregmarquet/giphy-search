@@ -18,7 +18,9 @@ class App extends Component {
     const self = this;
     giphy.search(keyword, function (err, res) {
       console.log('result:', res); 
-      self.setState({ giphs:res.data });
+      if(res && res.data){
+        self.setState({ giphs:res.data });
+      }
     });
   }
 

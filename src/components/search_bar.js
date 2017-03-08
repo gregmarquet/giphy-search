@@ -5,7 +5,7 @@ class SearchBar extends Component {
     super(props);
 
     this.state = { term: ''};
-
+    this.hInput;
   }
 
   componentDidMount(){
@@ -15,9 +15,10 @@ class SearchBar extends Component {
   }
 
   handleInputChange(e){
-    const keyword = e.target.value;
     this.setState({term:keyword});
-    this.search(keyword); 
+    const keyword = e.target.value;
+    clearTimeout(this.hInput);
+    this.hInput = setTimeout(this.search.bind(this, keyword), 300); 
   }
 
   search(keyword){
