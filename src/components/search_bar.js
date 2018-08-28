@@ -10,7 +10,6 @@ class SearchBar extends Component {
 
   componentDidMount(){
     const keyword = 'cats';
-    // this.setState({ term:keyword });
     this.search(keyword);
   }
 
@@ -23,7 +22,6 @@ class SearchBar extends Component {
 
   search(keyword){
     this.props.searchCallback(keyword);
-    console.log(keyword);
   }
 
   render() {
